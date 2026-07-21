@@ -53,7 +53,7 @@ export default function Hero() {
             Corporate Video Production Company
           </span>
 
-          <h1 className="mt-5 font-display text-[46px] font-extrabold leading-[1.08] tracking-tight text-white sm:text-[56px] lg:text-[64px]">
+          <h1 className="mt-5 font-display text-[30px] md:text-[46px] font-extrabold leading-[1.08] tracking-tight text-white sm:text-[56px] lg:text-[64px]">
             Powerful Videos.
             <br />
             Stronger Brands.

@@ -54,13 +54,13 @@ export default function Hero() {
             Corporate Video Production Company
           </span>
 
-          <h1 className="mt-5 font-display text-[30px] sm:text-[36px] md:text-[42px] lg:text-[48px] font-extrabold leading-[1.08] tracking-tight text-white">
+          <h1 className="mt-5 font-display text-[30px] sm:text-[36px] md:text-[42px] lg:text-[70px] font-extrabold leading-[1.08] tracking-tight text-white">
             Powerful Videos.
             <br />
             Stronger Brands.
           </h1>
 
-          <p className="mt-6 max-w-md md:max-w-lg text-[13px] md:text-[17px] leading-relaxed text-white/60">
+          <p className="mt-6 max-w-md md:max-w-lg text-[13px] md:text-[17px] lg:text-[1.3rem] leading-relaxed text-white/60">
             We create corporate films, commercials, product videos, training
             content and animation that inspire audiences and help businesses
             grow.

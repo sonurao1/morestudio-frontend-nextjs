@@ -58,7 +58,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 border-b border-white/5 transition-all duration-500
+      className={`fixed inset-x-0 top-0 z-50 border-b border-white/5 transition-all duration-500 overflow-hidden
       ${hidden ? "-translate-y-full" : "translate-y-0"}
       ${scrolled ? "bg-night/95 backdrop-blur" : "bg-transparent"}`}
     >

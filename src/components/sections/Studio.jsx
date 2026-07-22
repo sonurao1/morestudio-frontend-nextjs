@@ -6,7 +6,7 @@ export default function Studio() {
   return (
     <section className="bg-night py-20 lg:py-24">
       <Container>
-        <div className="max-w-2xl">
+        <div className="max-w-2xl  w-full mx-auto flex flex-col items-center justify-center text-center">
           <span className="eyebrow text-xs font-bold uppercase tracking-[0.2em] text-brand">
             Our Studio
           </span>

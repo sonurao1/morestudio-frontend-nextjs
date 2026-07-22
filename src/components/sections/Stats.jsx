@@ -1,3 +1,5 @@
+"use client";
+
 import Container from "@/components/ui/Container";
 import Stat from "@/components/ui/Stat";
 import { stats } from "@/data/stats";

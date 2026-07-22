@@ -1,26 +1,24 @@
-import { Film, Users, CalendarDays, Sparkles } from "lucide-react";
-
 export const stats = [
   {
-    icon: Film,
+    icon: "film",
     value: "700+",
     label: "Projects Delivered",
     sublabel: "Across industries",
   },
   {
-    icon: Users,
+    icon: "users",
     value: "100+",
     label: "Happy Brands",
     sublabel: "Big & small",
   },
   {
-    icon: CalendarDays,
+    icon: "calendar",
     value: "13+",
     label: "Years of Experience",
     sublabel: "In storytelling",
   },
   {
-    icon: Sparkles,
+    icon: "sparkles",
     value: "35+",
     label: "Creative Specialists",
     sublabel: "In-house team",

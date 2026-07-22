@@ -50,17 +50,17 @@ export default function Hero() {
       <Container className="relative z-10 grid min-h-[90vh] grid-cols-1 items-center gap-16 py-20 lg:grid-cols-2 lg:gap-12 lg:py-28">
         {/* Left Content */}
         <div>
-          <span className="eyebrow text-xs font-bold uppercase tracking-[0.25em] text-[#FED600]">
+          <span className="eyebrow text-[13px] sm:text-xs font-bold uppercase tracking-[0.25em] text-[#FED600]">
             Corporate Video Production Company
           </span>
 
-          <h1 className="mt-5 font-display text-[30px] sm:text-[46px] font-extrabold leading-[1.08] tracking-tight text-white md:text-[56px] lg:text-[64px]">
+          <h1 className="mt-5 font-display text-[30px] sm:text-[36px] md:text-[42px] lg:text-[48px] font-extrabold leading-[1.08] tracking-tight text-white">
             Powerful Videos.
             <br />
             Stronger Brands.
           </h1>
 
-          <p className="mt-6 max-w-lg text-[17px] leading-relaxed text-white/60">
+          <p className="mt-6 max-w-md md:max-w-lg text-[13px] md:text-[17px] leading-relaxed text-white/60">
             We create corporate films, commercials, product videos, training
             content and animation that inspire audiences and help businesses
             grow.
@@ -80,11 +80,11 @@ export default function Hero() {
 
           {/* Buttons */}
           <div className="mt-10 flex flex-wrap gap-4">
-            <Button href="#work" size="lg" icon>
+            <Button href="#work"  icon className = "w-[180px] sm:w-[200px]">
               View Our Work
             </Button>
 
-            <Button href="#contact" variant="outline" size="lg">
+            <Button href="#contact" variant="outline"  className = "w-[180px] sm:w-[200px]">
               Book a Discovery Call
             </Button>
           </div>

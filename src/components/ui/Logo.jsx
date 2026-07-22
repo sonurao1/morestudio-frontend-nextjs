@@ -7,7 +7,7 @@ export default function Logo({ className = "" }) {
       <Image 
       src={moreslidesLogo}
        alt="MoreSlides Logo" 
-       className="h-12 w-auto text-white"
+       className="h-8 md:h-12 w-auto text-white"
       />
     </a>
   );

@@ -17,7 +17,7 @@ export default function About() {
             Who We Are
           </span>
 
-          <h2 className="  mt-4 font-display text-[1.5rem] lg:text-[2rem] font-extrabold leading-[1.15] tracking-tight text-ink sm:text-[41px]">
+          <h2 className="  mt-4 font-display text-[1.5rem] sm:text-[2rem] font-extrabold leading-[1.15] tracking-tight text-ink lg:text-[41px]">
             Storytellers. Filmmakers.
             <br />
             Brand Builders.

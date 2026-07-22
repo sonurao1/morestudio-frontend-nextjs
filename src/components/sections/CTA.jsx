@@ -10,9 +10,10 @@ export default function CTA() {
     >
       <Image
         src="/global_images/CTABG.png"
-        alt="CTA Background"
+        alt=""
         fill
-        priority
+        loading="lazy"
+        sizes="100vw"
         className="-z-20 object-cover object-center"
       />
 

@@ -1,5 +1,5 @@
-import { Play } from "lucide-react";
-import Image from "next/image";import moreslidesLogo from "@/Assets/logos/moreslides.webp";
+import Image from "next/image";
+import moreslidesLogo from "@/Assets/logos/moreslides.webp";
 
 export default function Logo({ className = "" }) {
   return (

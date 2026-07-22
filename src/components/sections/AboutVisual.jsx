@@ -1,4 +1,3 @@
-import { Aperture } from "lucide-react";
 import Image from "next/image";
 
 // import CenamaticImage from "@/Assets/global_images/page2.png";
@@ -12,12 +11,10 @@ export default function AboutVisual() {
 
       <Image
         src="/global_images/page2.png"
-        alt="Cenamatic"
-        width={800}
-        height={600}
-        priority
-        quality={100}
-        className="absolute inset-0 h-full w-full object-cover"
+        alt="Inside the MoreStudios production set"
+        fill
+        sizes="(min-width: 1024px) 55vw, 100vw"
+        className="object-cover"
       />
 
     </div>

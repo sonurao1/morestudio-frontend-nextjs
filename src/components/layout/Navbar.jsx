@@ -11,6 +11,7 @@ import { services } from "@/data/services";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
   const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -141,16 +142,50 @@ export default function Navbar() {
       {mobileOpen && (
         <div className="border-t border-white/5 bg-night lg:hidden">
           <Container className="flex flex-col gap-1 py-4">
-            {navLinks.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                className="rounded-lg px-2 py-3 text-[16px] font-medium text-white/80 hover:bg-white/5 hover:text-white"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) =>
+              link.hasDropdown ? (
+                <div key={link.label}>
+                  <button
+                    type="button"
+                    aria-expanded={mobileServicesOpen}
+                    onClick={() => setMobileServicesOpen((v) => !v)}
+                    className="flex w-full items-center justify-between rounded-lg px-2 py-3 text-[16px] font-medium text-white/80 hover:bg-white/5 hover:text-white"
+                  >
+                    {link.label}
+                    <ChevronDown
+                      className={`h-4 w-4 transition-transform duration-200 ${
+                        mobileServicesOpen ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+
+                  {mobileServicesOpen && (
+                    <div className="ml-2 flex flex-col gap-0.5 border-l border-white/10 pl-4">
+                      {services.map((service) => (
+                        <Link
+                          key={service.title}
+                          href="#services"
+                          onClick={() => setMobileOpen(false)}
+                          className="flex items-center gap-2.5 rounded-lg px-2 py-2.5 text-[14.5px] text-white/60 hover:bg-white/5 hover:text-white"
+                        >
+                          <service.icon className="h-4 w-4 shrink-0 text-brand" strokeWidth={1.75} />
+                          {service.title}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="rounded-lg px-2 py-3 text-[16px] font-medium text-white/80 hover:bg-white/5 hover:text-white"
+                >
+                  {link.label}
+                </Link>
+              )
+            )}
 
             <Button href="#contact" className="mt-3 justify-center">
               Book a Consultation

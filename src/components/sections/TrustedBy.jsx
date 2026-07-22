@@ -40,7 +40,7 @@ export default function TrustedBy() {
           end:"top 50%",
       
           invalidateOnRefresh: true,
-          markers: true,
+          // markers: true,
           scrub:1
         },
       });

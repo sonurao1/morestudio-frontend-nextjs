@@ -50,6 +50,7 @@ export default function TrustedBy() {
 
   return (
     <section
+    id="industries"
       ref={sectionRef}
       className="border-y border-line bg-surface py-10"
     >

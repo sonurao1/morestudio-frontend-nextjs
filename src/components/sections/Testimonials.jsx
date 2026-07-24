@@ -11,7 +11,7 @@ export default function Testimonials() {
   const { active, goTo, pause, resume } = useCarousel(testimonialGroups.length);
 
   return (
-    <section className="bg-white py-20 lg:py-28">
+    <section className="bg-white py-20 lg:py-28" id="blog">
       <Container>
         <SectionHeading
           eyebrow="What Our Clients Say"

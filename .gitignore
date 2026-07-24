@@ -55,7 +55,6 @@ Thumbs.db
 # Large Media Files
 # ==========================
 public/videos/
-*.mp4
 *.mov
 *.avi
 *.mkv

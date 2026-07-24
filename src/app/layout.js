@@ -1,6 +1,9 @@
 import { Manrope, Inter } from "next/font/google";
 import "./globals.css";
 
+import SmoothScroll from "@/components/sections/SmoothScrolling";
+
+
 const manrope = Manrope({
   variable: "--font-display",
   subsets: ["latin"],
@@ -110,7 +113,9 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className="min-h-full flex flex-col bg-white font-body text-ink overflow-x-hidden" suppressHydrationWarning={true}>
-        {children}
+        <SmoothScroll>
+          {children}
+        </SmoothScroll>
       </body>
     </html>
   );

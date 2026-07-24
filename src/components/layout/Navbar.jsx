@@ -19,18 +19,43 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   const lastScrollTop = useRef(0);
-  const mobileOpenRef = useRef(mobileOpen);
+  const mobileOpenRef = useRef(false);
 
   useEffect(() => {
     mobileOpenRef.current = mobileOpen;
   }, [mobileOpen]);
 
+const smoothScroll = (e, href, closeMobile = false) => {
+  if (!href.startsWith("#")) return;
+
+  e.preventDefault();
+
+  if (closeMobile) {
+    setMobileOpen(false);
+  }
+
+  const target = document.querySelector(href);
+
+  if (!target) {
+    console.log("Section not found:", href);
+    return;
+  }
+
+  if (window.lenis && typeof window.lenis.scrollTo === "function") {
+    window.lenis.scrollTo(target);
+  } else {
+    target.scrollIntoView({
+      behavior: "smooth",
+    });
+  }
+};
   useEffect(() => {
     const handleScroll = () => {
       if (mobileOpenRef.current) return;
 
       const scrollTop =
-        window.pageYOffset || document.documentElement.scrollTop;
+        window.pageYOffset ||
+        document.documentElement.scrollTop;
 
       if (scrollTop <= 25) {
         setHidden(false);
@@ -45,13 +70,23 @@ export default function Navbar() {
       lastScrollTop.current = scrollTop;
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener(
+      "scroll",
+      handleScroll,
+      { passive: true }
+    );
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () =>
+      window.removeEventListener(
+        "scroll",
+        handleScroll
+      );
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    document.body.style.overflow = mobileOpen
+      ? "hidden"
+      : "";
 
     return () => {
       document.body.style.overflow = "";
@@ -65,32 +100,48 @@ export default function Navbar() {
       ${scrolled ? "bg-night/95 backdrop-blur" : "bg-transparent"}`}
     >
       <Container className="flex h-[76px] items-center justify-between overflow-visible">
+
         <Logo />
 
-        {/* Desktop Navigation */}
         <nav className="hidden items-center gap-9 lg:flex">
-          {navLinks.map((link) =>
+                    {navLinks.map((link) =>
             link.hasDropdown ? (
-              <div key={link.label} className="group relative">
+              <div
+                key={link.label}
+                className="group relative"
+              >
                 <Link
                   href={link.href}
+                  onClick={(e) =>
+                    smoothScroll(e, link.href)
+                  }
                   className="flex items-center gap-1 text-[15.5px] font-medium text-white/75 transition-colors hover:text-white"
                 >
                   {link.label}
-                  <ChevronDown className="h-3.5 w-3.5 transition-transform duration-200 group-hover:rotate-180" />
+
+                  <ChevronDown
+                    className="h-3.5 w-3.5 transition-transform duration-200 group-hover:rotate-180"
+                  />
                 </Link>
 
-                {/* Desktop Dropdown */}
-                <div className="invisible absolute left-1/2 top-full z-[9999] w-[560px] max-w-[calc(100vw-3rem)] -translate-x-1/2 pt-5 opacity-0 transition-all duration-300 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+                {/* Dropdown */}
+                <div className="invisible absolute left-1/2 top-full z-[9999] w-[560px] max-w-[calc(100vw-3rem)] -translate-x-1/2 pt-5 opacity-0 transition-all duration-300 group-hover:visible group-hover:opacity-100">
                   <div className="rounded-2xl border border-white/10 bg-[#101014]/95 p-3 shadow-[0_30px_80px_rgba(0,0,0,.55)] backdrop-blur-xl">
+
                     <div className="grid grid-cols-2 gap-2">
                       {services.map((service) => (
                         <Link
                           key={service.title}
                           href="#services"
+                          onClick={(e) =>
+                            smoothScroll(
+                              e,
+                              "#services"
+                            )
+                          }
                           className="group/item flex items-start gap-3 rounded-xl p-3 transition-all duration-200 hover:bg-white/5"
                         >
-                          <div className="mt-0.5 flex h-10 w-10 items-center justify-center rounded-lg bg-brand/10 transition-colors group-hover/item:bg-brand/20">
+                          <div className="mt-0.5 flex h-10 w-10 items-center justify-center rounded-lg bg-brand/10">
                             <service.icon
                               className="h-5 w-5 text-brand"
                               strokeWidth={1.8}
@@ -110,16 +161,26 @@ export default function Navbar() {
                       ))}
                     </div>
 
+
                     <div className="mt-3 border-t border-white/10 pt-3">
                       <Link
                         href="#services"
+                        onClick={(e) =>
+                          smoothScroll(
+                            e,
+                            "#services"
+                          )
+                        }
                         className="flex items-center justify-between rounded-xl px-3 py-3 text-sm font-medium text-white/80 transition hover:bg-white/5 hover:text-white"
                       >
-                        <span>Explore All Services</span>
+                        <span>
+                          Explore All Services
+                        </span>
 
                         <ChevronDown className="-rotate-90 h-4 w-4" />
                       </Link>
                     </div>
+
                   </div>
                 </div>
               </div>
@@ -127,6 +188,9 @@ export default function Navbar() {
               <Link
                 key={link.label}
                 href={link.href}
+                onClick={(e) =>
+                  smoothScroll(e, link.href)
+                }
                 className="text-[15.5px] font-medium text-white/75 transition-colors hover:text-white"
               >
                 {link.label}
@@ -135,16 +199,26 @@ export default function Navbar() {
           )}
         </nav>
 
+
         <div className="hidden lg:block">
-          <Button href="#contact" size="sm">
+          <Button
+            href="#contact"
+            onClick={(e) =>
+              smoothScroll(e, "#contact")
+            }
+            size="sm"
+          >
             Book a Consultation
           </Button>
         </div>
 
+
         {/* Mobile Toggle */}
         <button
           aria-label="Toggle menu"
-          onClick={() => setMobileOpen((v) => !v)}
+          onClick={() =>
+            setMobileOpen((v) => !v)
+          }
           className="flex h-10 w-10 items-center justify-center rounded-lg text-white lg:hidden"
         >
           {mobileOpen ? (
@@ -153,36 +227,51 @@ export default function Navbar() {
             <Menu className="h-6 w-6" />
           )}
         </button>
+
       </Container>
             {/* Mobile Menu */}
       {mobileOpen && (
         <div className="border-t border-white/5 bg-night lg:hidden">
           <Container className="flex flex-col gap-1 py-4">
+
             {navLinks.map((link) =>
               link.hasDropdown ? (
                 <div key={link.label}>
+
                   <button
                     type="button"
                     aria-expanded={mobileServicesOpen}
-                    onClick={() => setMobileServicesOpen((v) => !v)}
+                    onClick={() =>
+                      setMobileServicesOpen((v) => !v)
+                    }
                     className="flex w-full items-center justify-between rounded-lg px-2 py-3 text-[16px] font-medium text-white/80 transition hover:bg-white/5 hover:text-white"
                   >
                     {link.label}
 
                     <ChevronDown
                       className={`h-4 w-4 transition-transform duration-300 ${
-                        mobileServicesOpen ? "rotate-180" : ""
+                        mobileServicesOpen
+                          ? "rotate-180"
+                          : ""
                       }`}
                     />
                   </button>
 
+
                   {mobileServicesOpen && (
                     <div className="ml-2 mt-1 flex flex-col gap-1 border-l border-white/10 pl-4">
+
                       {services.map((service) => (
                         <Link
                           key={service.title}
                           href="#services"
-                          onClick={() => setMobileOpen(false)}
+                          onClick={(e) =>
+                            smoothScroll(
+                              e,
+                              "#services",
+                              true
+                            )
+                          }
                           className="flex items-center gap-3 rounded-lg px-2 py-3 text-[14.5px] text-white/65 transition hover:bg-white/5 hover:text-white"
                         >
                           <service.icon
@@ -190,34 +279,56 @@ export default function Navbar() {
                             strokeWidth={1.75}
                           />
 
-                          <span>{service.title}</span>
+                          <span>
+                            {service.title}
+                          </span>
+
                         </Link>
                       ))}
+
                     </div>
                   )}
+
                 </div>
               ) : (
+
                 <Link
                   key={link.label}
                   href={link.href}
-                  onClick={() => setMobileOpen(false)}
+                  onClick={(e) =>
+                    smoothScroll(
+                      e,
+                      link.href,
+                      true
+                    )
+                  }
                   className="rounded-lg px-2 py-3 text-[16px] font-medium text-white/80 transition hover:bg-white/5 hover:text-white"
                 >
                   {link.label}
                 </Link>
+
               )
             )}
 
+
             <Button
               href="#contact"
+              onClick={(e) =>
+                smoothScroll(
+                  e,
+                  "#contact",
+                  true
+                )
+              }
               className="mt-4 justify-center"
-              onClick={() => setMobileOpen(false)}
             >
               Book a Consultation
             </Button>
+
           </Container>
         </div>
       )}
+
     </header>
   );
 }

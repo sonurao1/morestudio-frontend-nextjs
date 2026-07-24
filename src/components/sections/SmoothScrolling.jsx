@@ -8,8 +8,11 @@ export default function SmoothScroll({ children }) {
     const lenis = new Lenis({
       duration: 1.2,
       smoothWheel: true,
-      touchMultiplier: 1.5,
+      smoothTouch: true,
     });
+
+    // expose actual Lenis instance
+    window.lenis = lenis;
 
     function raf(time) {
       lenis.raf(time);
@@ -20,8 +23,9 @@ export default function SmoothScroll({ children }) {
 
     return () => {
       lenis.destroy();
+      window.lenis = null;
     };
   }, []);
 
-  return <>{children}</>;
+  return children;
 }

@@ -73,7 +73,7 @@ export default function TrustedBy() {
                   alt={brand.name}
                   width={160}
                   height={60}
-                  className="h-auto w-auto max-h-7 max-w-[90px] object-contain grayscale transition-all duration-300 group-hover:scale-105 group-hover:grayscale-0 sm:max-h-8 sm:max-w-[100px] md:max-h-9 md:max-w-[110px] lg:max-h-8 lg:max-w-[100px]"
+                  className="h-auto w-auto max-h-7 max-w-[90px] object-contain  transition-all duration-300 group-hover:scale-105 sm:max-h-8 sm:max-w-[100px] md:max-h-9 md:max-w-[110px] lg:max-h-8 lg:max-w-[100px]"
                 />
               </div>
             ))}

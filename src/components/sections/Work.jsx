@@ -1,3 +1,4 @@
+'use client'
 import { ArrowRight } from "lucide-react";
 import Container from "@/components/ui/Container";
 import WorkCard from "@/components/ui/WorkCard";

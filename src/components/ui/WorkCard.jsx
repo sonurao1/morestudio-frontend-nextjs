@@ -48,7 +48,7 @@ export default function WorkCard({
         {/* Video */}
         <video
           ref={videoRef}
-          src={videoLink || "/videos/corporateVideo.mp4"}
+          src={videoLink}
           muted
           loop
           playsInline
